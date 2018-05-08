@@ -1,10 +1,10 @@
-var mysql = require('mysql');
+let mysql = require('mysql');
 
-var con = mysql.createConnection({
+let con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'localmac'
-});
+})
 
 con.connect(function(err) {
   if (err) throw err;
@@ -12,5 +12,5 @@ con.connect(function(err) {
   con.query("CREATE DATABASE study_buddy_db", function (err, result) {
     if (err) throw err;
     console.log("Database created");
-  });
-});
+  })
+})
