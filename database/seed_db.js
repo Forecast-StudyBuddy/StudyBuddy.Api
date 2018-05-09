@@ -46,6 +46,6 @@ function insertUsers(){
 function queryDB(sql, values) {
     con.query(sql,[values], function(err, result){
         if(err) throw err
-        console.log('user table updated')
+        console.log('table updated')
     }) 
 }
