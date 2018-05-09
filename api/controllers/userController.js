@@ -1,4 +1,4 @@
-const { insert_user } = require('../db_calls/user_db_calls')
+const { insert_user, fetch_user } = require('../db_calls/user_db_calls')
 
 // POST
 // create a user
@@ -9,11 +9,29 @@ exports.create_user = (req, res) => {
     const email = req.body.email
     const password = req.body.password
 
-   insert_user(name, email, password, () => res.sendStatus(200))
+   insert_user(name, email, password, err => {
+       if (err) {
+        res.sendStatus(403)
+        return
+       }
+       res.sendStatus(200)
+   })
 }
 
 // GET
 // login
 exports.login = (req, res) => {
-    res.sendStatus(200)
+    const email = req.body.email
+    const password = req.body.password
+
+    fetch_user(email, result => {
+        if (!!result) {
+            const user = result[0]
+            if (user.password === password) {
+                res.send(result[0].email)
+                return
+            }
+        }
+        res.sendStatus(500)
+    })
 }

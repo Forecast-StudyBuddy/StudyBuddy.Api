@@ -5,7 +5,7 @@ module.exports = function (app) {
     app.route('/api/createUser')
         .post(userController.create_user);
     app.route('/api/login')
-        .get(userController.login)
+        .post(userController.login)
 
     const courseController = require('../controllers/courseController')
     app.route('/api/userCourses')
