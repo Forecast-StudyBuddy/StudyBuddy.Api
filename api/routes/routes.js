@@ -9,9 +9,9 @@ module.exports = function (app) {
 
     const courseController = require('../controllers/courseController')
     app.route('/api/userCourses')
-        .get(courseController.user_courses)
-    app.route('/api/assistCourse')
-        .post(courseController.assist_course)
+        .post(courseController.user_courses)
+    app.route('/api/currentCourses')
+        .post(courseController.current_courses)
 
     const requestController = require('../controllers/requestController')
     app.route('/api/requestAssistance')

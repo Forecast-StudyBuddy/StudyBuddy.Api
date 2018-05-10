@@ -7,7 +7,6 @@ let con = mysql.createConnection({
     database: 'study_buddy_db'
 })
 
-
 con.connect(function(err) {
     if(err) throw err
     console.log('Connected!')
