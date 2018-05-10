@@ -19,7 +19,7 @@ exports.request_assistance = function (req, res) {
     })
 }
 
-// GET
+// POST
 // return all open request related to the user
 exports.open_requests = function (req, res) {
     const email = req.body.email
@@ -29,7 +29,7 @@ exports.open_requests = function (req, res) {
     })
 }
 
-// GET
+// POST
 // return an array of my submitted requests and an array of my accepted requests
 exports.my_accepted_requests = function (req, res) {
     const email= req.body.email
@@ -53,6 +53,7 @@ exports.my_posted_requests = function (req, res) {
         res.send(results)
     })
 }
+
 // POST
 // receive an email and request id
 exports.accept_request = (req, res) => {
@@ -64,6 +65,7 @@ exports.accept_request = (req, res) => {
         res.sendStatus(200)
     })
 }
+
 // POST
 // complete a request when assistance has been given
 exports.complete_request = function (req, res) {

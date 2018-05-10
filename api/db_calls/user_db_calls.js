@@ -15,20 +15,27 @@ function queryDB(sql, values) {
 }
 
 exports.insert_user = (name, email, password, callback) => {
-    con.connect(err => {
-        if(err) throw err
-        let insert_user_sql= 'INSERT INTO users (name, email, password) VALUES ?'
-        var user_values= [[name, email, password]]
-        queryDB(insert_user_sql , user_values)
-        callback()
+    // con.connect()
+    let insert_user_sql= 'INSERT INTO users (name, email, password) VALUES (?)'
+    con.query(insert_user_sql, [[name, email, password]], (err, result) => {
+        callback(err)
     })
+    // con.end()
 }
 
-exports.fetch_user = email => {
-    con.connect(err => {
-        if(err) throw err
-        let insert_user_sql= 'SELECT * FROM users WHERE email=?'
-        queryDB(insert_user_sql , email)
-        // callback()
-    })
+exports.fetch_user = (email, callback) => {
+    // con.connect(err => {
+    //     if(err) throw err
+    //     let insert_user_sql= 'SELECT * FROM users WHERE email=?'
+    //     con.query(insert_user_sql, email, function(err, result){
+    //         if(err) throw err
+    //         callback(result)
+    //     })
+    // })
+
+    let insert_user_sql= 'SELECT * FROM users WHERE email=?'
+        con.query(insert_user_sql, email, function(err, result){
+            if(err) throw err
+            callback(result)
+        })
 }
