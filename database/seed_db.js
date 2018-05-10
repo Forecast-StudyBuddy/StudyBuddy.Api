@@ -69,9 +69,19 @@ insertCourseUsers = () => {
 }
 
 insertRequests = () => {
-    // let insert_request_sql= 'INSERT INTO requests (text, user_id, course_id, taker_id, completed) VALUES ?'
-    // var request_values= [['Need help with Math101','aditi.anand22@gmail.com','Math101', 'sun@purdue.edu', false]]
-    // queryDB(insert_request_sql , request_values)
+    let insert_request_sql= 'INSERT INTO requests (user_id, course_id, taker_id, completed, text) VALUES ?'
+    var request_values= [
+        ['test1@purdue.edu', 'MA 16100', null, false, 'I need help'],
+        ['test3@purdue.edu', 'MA 16100', null, false, 'I need help'],
+        ['test4@purdue.edu', 'ENGL 10600', null, false, 'I need help'],
+        ['test2@purdue.edu', 'CS 18000', null, false, 'I need help'],
+        ['test3@purdue.edu', 'CS 18000', null, false, 'I need help'],
+        ['test4@purdue.edu', 'CS 18000', null, false, 'I need help'],
+        ['test5@purdue.edu', 'CS 18000', null, false, 'I need help'],
+        ['test3@purdue.edu', 'ECON 25200', null, false, 'I need help'],
+        ['test1@purdue.edu', 'STAT 35000', null, false, 'I need help']
+    ]
+    queryDB(insert_request_sql , request_values)
 }
 
 function queryDB(sql, values) {
