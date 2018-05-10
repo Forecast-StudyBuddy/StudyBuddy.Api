@@ -18,7 +18,7 @@ exports.create_user = (req, res) => {
    })
 }
 
-// GET
+// POST
 // login
 exports.login = (req, res) => {
     const email = req.body.email
