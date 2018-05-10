@@ -38,7 +38,7 @@ exports.fetch_my_accepted_requests= (email, callback )=> {
 }
 exports.fetch_my_posted_requests = (email, callback) => {
     con.connect(err => {if(err) throw err })
-        let insert_user_sql= `SELECT * FROM users WHERE email=${email}`
+        let insert_user_sql= `SELECT * FROM users WHERE id=${email}`
         con.query(insert_request_sql, function(err, result){
             callback(err, results)
         })
