@@ -70,7 +70,7 @@ exports.accept_request = (req, res) => {
 // complete a request when assistance has been given
 exports.complete_request = function (req, res) {
     const email= req.body.email
-    const request_id = req.body.request_id
+    const request_id = req.body.requestId
     complete_request(request_id, email, err => {
         if(!!err) throw err
         res.sendStatus(200)

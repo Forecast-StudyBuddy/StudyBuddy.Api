@@ -24,22 +24,22 @@ exports.fetch_open_requests = (email, callback) => {
 }
 
 exports.fetch_my_accepted_requests= (email, callback )=> {
-    let insert_user_sql= 'SELECT * FROM requests WHERE taker_id=?'
-    con.query(insert_request_sql,[request_values], function(err, result){
+    let insert_user_sql= `SELECT * FROM requests WHERE taker_id=\"${email}\"`
+    con.query(insert_user_sql, function(err, result){
         callback(err, result)
     })
 }
 
 exports.fetch_my_posted_requests = (email, callback) => {
-    let insert_user_sql= `SELECT * FROM users WHERE id=${email}`
-    con.query(insert_request_sql, function(err, result){
+    let insert_user_sql= `SELECT * FROM requests WHERE user_id=\"${email}\" AND completed=FALSE`
+    con.query(insert_user_sql, function(err, result){
         callback(err, result)
     })
 }
 
 exports.complete_request = (request_id, email, callback )=> {
-    let insert_user_sql= `UPDATE requests SET completed=${true} WHERE id=${request_id} AND user_id=${email}`
-    con.query(insert_request_sql, function(err, result){
+    let insert_user_sql= `UPDATE requests SET completed=TRUE WHERE id=${request_id} AND user_id=\"${email}\"`
+    con.query(insert_user_sql, function(err, result){
         callback(err, result)
     })
 }
