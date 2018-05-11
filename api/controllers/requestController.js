@@ -10,7 +10,7 @@ const { accept_request,
 exports.request_assistance = function (req, res) {
     const text = req.body.text
     const user_id = req.body.email
-    const course_id = req.body.course_id
+    const course_id = req.body.courseId
     const taker_id = null
     const complete = false
     create_request(text,user_id,course_id,taker_id,complete,err => {
