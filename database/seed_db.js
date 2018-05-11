@@ -11,15 +11,6 @@ con.connect(err => {
     if(!!err) throw err
 
     insertUsers()
-<<<<<<< HEAD
-    courseUsers()
-    courses()
-})
-
-function courses(){
-    let insert_courses_sql= 'INSERT INTO courses (id, course_name) VALUES ?'
-    var courses_values= [['Math101','Introduction to Calculus'],['CS123','Introduction to Computer Science'],['CS101', 'Object Oriented Programming'],['CS114','Operating System'],['ENG176', 'Introduction to English']]
-=======
     insertCourses()
     insertCourseUsers()
     insertRequests()
@@ -48,7 +39,6 @@ insertCourses = () => {
         ['ECON 25200', 'Macroeconomics'],
         ['STAT 35000', 'Introduction To Statistics'],
     ]
->>>>>>> feature/seed_db
     queryDB(insert_courses_sql , courses_values)
 }
 
@@ -81,28 +71,19 @@ insertCourseUsers = () => {
 insertRequests = () => {
     let insert_request_sql= 'INSERT INTO requests (user_id, course_id, taker_id, completed, text) VALUES ?'
     var request_values= [
-        ['test1@purdue.edu', 'MA 16100', null, false, 'I need help'],
-        ['test3@purdue.edu', 'MA 16100', null, false, 'I need help'],
-        ['test4@purdue.edu', 'ENGL 10600', null, false, 'I need help'],
-        ['test2@purdue.edu', 'CS 18000', null, false, 'I need help'],
-        ['test3@purdue.edu', 'CS 18000', null, false, 'I need help'],
-        ['test4@purdue.edu', 'CS 18000', null, false, 'I need help'],
-        ['test5@purdue.edu', 'CS 18000', null, false, 'I need help'],
-        ['test3@purdue.edu', 'ECON 25200', null, false, 'I need help'],
-        ['test1@purdue.edu', 'STAT 35000', null, false, 'I need help']
+        ['test1@purdue.edu', 'MA 16100', null, false, 'This course is too hard man. I am failing college'],
+        ['test3@purdue.edu', 'MA 16100', null, false, 'I need help! Math is not my strong suit.'],
+        ['test4@purdue.edu', 'ENGL 10600', null, false, 'I am an exchange student from Turkey and I would like some help on my English essay.'],
+        ['test2@purdue.edu', 'CS 18000', null, false, 'Some help on Project 5 needed please!'],
+        ['test3@purdue.edu', 'CS 18000', null, false, 'Can anyone teach me Polymorphism?'],
+        ['test4@purdue.edu', 'CS 18000', null, false, 'Looking for someone to study the midterm together!'],
+        ['test5@purdue.edu', 'CS 18000', null, false, 'Is anyone insterested in going over Chapter 3 with me?'],
+        ['test3@purdue.edu', 'ECON 25200', null, false, 'I missed a few classes. Would anyone help me catch up?'],
+        ['test1@purdue.edu', 'STAT 35000', null, false, 'I have absolute no idea how to study this course. Any help is appreciated!']
     ]
     queryDB(insert_request_sql , request_values)
 }
 
-<<<<<<< HEAD
-function insertUsers(){
-    let insert_user_sql= 'INSERT INTO users (name, id, password) VALUES ?'
-    var user_values= [['Aditi Anand','aditi.anand22@gmail.com','123lala'], ['Sun zang','sun@purdue.edu','pass124']]
-    queryDB(insert_user_sql , user_values)
-}
-
-=======
->>>>>>> feature/seed_db
 function queryDB(sql, values) {
     con.query(sql,[values], function(err, result){
         if(err) throw err
