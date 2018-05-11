@@ -11,15 +11,6 @@ con.connect(err => {
     if(!!err) throw err
 
     insertUsers()
-<<<<<<< HEAD
-    courseUsers()
-    courses()
-})
-
-function courses(){
-    let insert_courses_sql= 'INSERT INTO courses (id, course_name) VALUES ?'
-    var courses_values= [['Math101','Introduction to Calculus'],['CS123','Introduction to Computer Science'],['CS101', 'Object Oriented Programming'],['CS114','Operating System'],['ENG176', 'Introduction to English']]
-=======
     insertCourses()
     insertCourseUsers()
     insertRequests()
@@ -48,7 +39,6 @@ insertCourses = () => {
         ['ECON 25200', 'Macroeconomics'],
         ['STAT 35000', 'Introduction To Statistics'],
     ]
->>>>>>> feature/seed_db
     queryDB(insert_courses_sql , courses_values)
 }
 
@@ -94,15 +84,6 @@ insertRequests = () => {
     queryDB(insert_request_sql , request_values)
 }
 
-<<<<<<< HEAD
-function insertUsers(){
-    let insert_user_sql= 'INSERT INTO users (name, id, password) VALUES ?'
-    var user_values= [['Aditi Anand','aditi.anand22@gmail.com','123lala'], ['Sun zang','sun@purdue.edu','pass124']]
-    queryDB(insert_user_sql , user_values)
-}
-
-=======
->>>>>>> feature/seed_db
 function queryDB(sql, values) {
     con.query(sql,[values], function(err, result){
         if(err) throw err
